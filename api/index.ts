@@ -72,11 +72,6 @@ async function getNextWord(currentWord: string) {
   return result
 }
 
-app.get('/test', async (req: any, res: any) => {
-  const result = await getNextWord('ジャバスクリプト')
-  return res.status(200).json(result)
-})
-
 /**
  * true：OK
  * false: ルール違反
@@ -97,10 +92,20 @@ app.get('/shiritori', async (req: any, res: any) => {
 
   const inputWordInformation = await getFurigana(input)
     .then((result) => {
-      return {
-        furigana: result,
-        violation: false,
-        error: null
+      if(result.slice(-1) != 'ン') {
+        return {
+          furigana: result,
+          violation: false,
+          error: null,
+          error_code: true
+        }
+      } else {
+        return {
+          furigana: result,
+          violation: true,
+          error: '入力された言葉が「ん」で終了しています',
+          error_code: 0
+        }
       }
     })
     .catch((error) => {
@@ -108,22 +113,25 @@ app.get('/shiritori', async (req: any, res: any) => {
         case -1:
           // 言葉が2つ以上の単語から作られている
           return {
-            furigana: null,
+            furigana: '',
             violation: true,
-            error: 'Expected number of words is 1'
+            error: '複数の単語からなる言葉を入力することはできません',
+            error_code: error
           }
         case -2:
           // 名詞以外の単語が入力された
           return {
-            furigana: null,
+            furigana: '',
             violation: true,
-            error: 'Expected word is noun'
+            error: '入力する言葉は名詞でなければいけません',
+            error_code: error
           }
         default:
           return {
-            furigana: null,
+            furigana: '',
             violation: null,
-            error: error
+            error: error,
+            error_code: null
           }
       }
     })
@@ -134,17 +142,20 @@ app.get('/shiritori', async (req: any, res: any) => {
       input: {
         input_word: input,
         information: inputWordInformation
-      }
+      },
+      next: null
     })
   }
 
+  const nextWordInformation = await getNextWord(inputWordInformation.furigana)
 
   return res.status(200).json({
     code: true,
     input: {
       input_word: input,
       information: inputWordInformation
-    }
+    },
+    next: nextWordInformation
   })
 })
 
