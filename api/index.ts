@@ -42,26 +42,29 @@ function getFurigana(text: string): Promise<string|null> {
 
 async function getNextWord(furigana: string) {
   const c = await pool.connect()
-  const firstChar = furigana.slice(0, 1) // 先頭1文字
-  try{
-    const result = await c.query(
-    `
-      SELECT
-        *
-      FROM
-        word_list
-      WHERE
-        furigana LIKE $1
-      AND
-        furigana NOT LIKE '%ン'
-      ORDER BY RANDOM()
-      LIMIT 1
-    `, [firstChar + '%'])
-    return result.rows
-  } catch(err) {
-    console.log(err)
-    return null
-  }
+  const nextFirstChar = furigana.slice(-1) // 今の単語の最後の1文字
+  const result = await c.query(
+  `
+    SELECT
+      *
+    FROM
+      word_list
+    WHERE
+      furigana LIKE $1
+    AND
+      furigana NOT LIKE '%ン'
+    ORDER BY RANDOM()
+    LIMIT 1
+  `, [nextFirstChar + '%'])
+    .then((result: any) => {
+      return result.rows
+    })
+    .catch((err: any) => {
+      console.log(err)
+      return null
+    })
+
+  return result
 }
 
 /**
