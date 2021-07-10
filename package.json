@@ -23,6 +23,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "express": "^4.17.1",
+    "kuromoji": "^0.1.2",
     "nuxt": "^2.15.7",
     "vuetify": "^2.5.5"
   },
