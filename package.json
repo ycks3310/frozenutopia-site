@@ -27,6 +27,7 @@
     "express": "^4.17.1",
     "kuromoji": "^0.1.2",
     "nuxt": "^2.15.7",
+    "pg": "^8.6.0",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {}
