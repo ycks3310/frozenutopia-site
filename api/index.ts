@@ -27,14 +27,14 @@ function getFurigana(text: string): Promise<string> {
 app.get('/shiritori', async (req: any, res: any) => {
   const input: string = req.query.text ?? null
   if(input === null) {
-    return res.status(400).json({code: 900, error: 'text query is required'})
+    return res.status(400).json({code: -1, error: 'text query is required'})
   }
 
   // ひらがな、カタカナ、漢字の判定
   const japanese_regex = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/
   console.log(input.match(japanese_regex))
   if (input.match(japanese_regex) === null) {
-    return res.status(400).json({ code: 901, error: 'text expects only Japanese'})
+    return res.status(400).json({ code: -1, error: 'text expects only Japanese'})
   }
 
   const furigana = await getFurigana(input)
@@ -43,7 +43,7 @@ app.get('/shiritori', async (req: any, res: any) => {
     })
     .catch(e => {
       console.log(e)
-      return res.status(500).json({code: 999, error: e})
+      return res.status(500).json({code: -1, error: e})
     })
 
   return res.status(200).json({
