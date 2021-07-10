@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# mecabの作業用
+mecab-ipadic-2.7.0-20070801
