@@ -45,7 +45,7 @@ function getFurigana(text: string): Promise<string> {
   })
 }
 
-function convertSmallJapanese(text: string) {
+function convertSmallJapanese(text: string): string {
   switch(text) {
     case('ァ'):
       return 'ア'
@@ -69,7 +69,7 @@ function convertSmallJapanese(text: string) {
       return 'カ'
     case('ヶ'):
       return 'ケ'
-    case('ワ'):
+    case('ヮ'):
       return 'ワ'
     default:
       return text
