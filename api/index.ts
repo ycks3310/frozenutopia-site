@@ -45,9 +45,40 @@ function getFurigana(text: string): Promise<string> {
   })
 }
 
+function convertSmallJapanese(text: string) {
+  switch(text) {
+    case('ァ'):
+      return 'ア'
+    case('ィ'):
+      return 'イ'
+    case('ゥ'):
+      return 'ウ'
+    case('ェ'):
+      return 'エ'
+    case('ォ'):
+      return 'オ'
+    case('ッ'):
+      return 'ツ'
+    case('ャ'):
+      return 'ヤ'
+    case('ュ'):
+      return 'ユ'
+    case('ョ'):
+      return 'ヨ'
+    case('ヵ'):
+      return 'カ'
+    case('ヶ'):
+      return 'ケ'
+    case('ワ'):
+      return 'ワ'
+    default:
+      return text
+  }
+}
+
 async function getNextWord(currentWord: string) {
   const c = await pool.connect()
-  const nextFirstChar = currentWord.slice(-1) // 今の単語の最後の1文字
+  const nextFirstChar = convertSmallJapanese(currentWord.slice(-1)) // 今の単語の最後の1文字
   const result = await c.query(
   `
     SELECT
@@ -90,9 +121,9 @@ app.get('/shiritori', async (req: any, res: any) => {
   }
 
   // ひらがな、カタカナ、漢字の判定
-  const japanese_regex = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/
+  const japaneseRegex = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/
   // console.log(input.match(japanese_regex))
-  if (input.match(japanese_regex) === null) {
+  if (input.match(japaneseRegex) === null) {
     return res.status(400).json({ code: -1, error: 'text expects only Japanese'})
   }
 
