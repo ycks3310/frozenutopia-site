@@ -21,6 +21,11 @@ function getFurigana(text: string): Promise<string|null> {
   })
 }
 
+/**
+ * 0：OK
+ * 1: ルール違反
+ * -1: エラー
+ */
 app.get('/shiritori', async (req: any, res: any) => {
   const input: string = req.query.text ?? null
   if(input === null) {
@@ -40,7 +45,7 @@ app.get('/shiritori', async (req: any, res: any) => {
     })
 
   if(furigana === null) {
-    return res.status(400).json({code: -1, error: 'Number of words is larger than 1'})
+    return res.status(400).json({code: 1, error: 'Number of words is larger than 1'})
   }
 
   return res.status(200).json({
