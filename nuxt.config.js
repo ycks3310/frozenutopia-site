@@ -6,7 +6,7 @@ export default {
     titleTemplate: '%s - frozenutopia-site',
     title: 'frozenutopia-site',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -51,7 +51,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -61,6 +61,15 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+            primary: '#607d8b',
+            secondary: '#03a9f4',
+            accent: '#ff5722',
+            error: '#f44336',
+            warning: '#e91e63',
+            info: '#673ab7',
+            success: '#2196f3'
         }
       }
     }
@@ -68,5 +77,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  serverMiddleware: [
+    '~/api'
+  ]
 }
