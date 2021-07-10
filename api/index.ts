@@ -51,7 +51,9 @@ async function getNextWord(currentWord: string) {
   const result = await c.query(
   `
     SELECT
-      *
+      id,
+      word,
+      furigana
     FROM
       word_list
     WHERE
@@ -62,7 +64,11 @@ async function getNextWord(currentWord: string) {
     LIMIT 1
   `, [nextFirstChar + '%'])
     .then((result: any) => {
-      return result.rows
+      return {
+        id: result.rows[0].id,
+        word: result.rows[0].word,
+        furigana: result.rows[0].furigana
+      }
     })
     .catch((err: any) => {
       console.log(err)
