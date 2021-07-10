@@ -5,26 +5,26 @@ const kuromoji = require('kuromoji')
 app.use(express.json({ extended: true, limit: '100mb' }))
 app.use(express.urlencoded({ extended: true, limit: '100mb' }))
 
-function getYomigana(text: string): Promise<string> {
+function getFurigana(text: string): Promise<string> {
   return new Promise((resolve, reject) => {
     kuromoji.builder({ dicPath: './node_modules/kuromoji/dict'}).build((err: any, tokenizer: any) => {
       if(err) {
         reject(err)
       }
       const path = tokenizer.tokenize(text)
-      let yomigana: string = ''
+      let furigana: string = ''
       path.forEach((element: any) => {
         // console.log(element.reading)
-        yomigana = yomigana + element.reading
+        furigana = furigana + element.reading
       })
-      resolve(yomigana)
+      resolve(furigana)
     })
   })
 }
 
 app.get('/shiritori', async (req: any, res: any) => {
   const input = req.query.text
-  const yomigana = await getYomigana(input)
+  const furigana = await getFurigana(input)
   .then((result) => {
     return result
   })
@@ -34,7 +34,7 @@ app.get('/shiritori', async (req: any, res: any) => {
   })
   return res.status(200).json({
     input,
-    yomigana
+    furigana
   })
 })
 
