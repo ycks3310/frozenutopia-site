@@ -4,7 +4,7 @@ const kuromoji = require('kuromoji')
 const KUROMOJI_DIC_PATH = './node_modules/kuromoji/dict'
 const pg = require('pg')
 let pool: any
-if(process.env.ENV == 'develop') {
+if (process.env.ENV === 'develop') {
   pool = new pg.Pool({
     database: process.env.DB_NAME_DEV,
     user: process.env.DB_USER_DEV,
@@ -12,7 +12,7 @@ if(process.env.ENV == 'develop') {
     host: process.env.DB_HOST_DEV,
     port: 5432
   })
-} else if (process.env.ENV == 'production') {
+} else if (process.env.ENV === 'production') {
   pool = new pg.Pool({
     database: process.env.DB_NAME_PROD,
     user: process.env.DB_USER_PROD,
@@ -27,17 +27,17 @@ app.use(express.urlencoded({ extended: true, limit: '100mb' }))
 function getFurigana(text: string): Promise<string> {
   return new Promise((resolve, reject) => {
     kuromoji.builder({ dicPath: KUROMOJI_DIC_PATH}).build((err: any, tokenizer: any) => {
-      if(err) {
+      if (err) {
         reject(err)
       }
       const path = tokenizer.tokenize(text)
       // 複数個の単語を繋げて作られている単語はルール違反とする
-      //（アメリカ合衆国大統領など）
-      if(path.length != 1) {
+      // （アメリカ合衆国大統領など）
+      if (path.length !== 1) {
         reject(-1)
       }
       // 名詞以外はルール違反とする
-      if(path[0].pos != '名詞') {
+      if (path[0].pos !== '名詞') {
         reject(-2)
       }
       resolve(path[0].reading)
@@ -46,37 +46,37 @@ function getFurigana(text: string): Promise<string> {
 }
 
 function convertSmallKatakana(text: string): string {
-  switch(text) {
-    case('ァ'):
+  switch (text) {
+    case ('ァ'):
       return 'ア'
-    case('ィ'):
+    case ('ィ'):
       return 'イ'
-    case('ゥ'):
+    case ('ゥ'):
       return 'ウ'
-    case('ェ'):
+    case ('ェ'):
       return 'エ'
-    case('ォ'):
+    case ('ォ'):
       return 'オ'
-    case('ッ'):
+    case ('ッ'):
       return 'ツ'
-    case('ャ'):
+    case ('ャ'):
       return 'ヤ'
-    case('ュ'):
+    case ('ュ'):
       return 'ユ'
-    case('ョ'):
+    case ('ョ'):
       return 'ヨ'
-    case('ヵ'):
+    case ('ヵ'):
       return 'カ'
-    case('ヶ'):
+    case ('ヶ'):
       return 'ケ'
-    case('ヮ'):
+    case ('ヮ'):
       return 'ワ'
     default:
       return text
   }
 }
 
-async function getNextWord(currentWord: string) {
+async function getNextWord (currentWord: string) {
   const c = await pool.connect()
   const nextFirstChar = convertSmallKatakana(currentWord.slice(-1)) // 今の単語の最後の1文字
   const result = await c.query(
@@ -116,12 +116,12 @@ async function getNextWord(currentWord: string) {
  */
 app.get('/shiritori', async (req: any, res: any) => {
   const input: string = req.query.text ?? null
-  if(input === null) {
-    return res.status(400).json({code: -1, error: 'text query is required'})
+  if (input === null) {
+    return res.status(400).json({ code: -1, error: 'text query is required'})
   }
 
   // ひらがな、カタカナ、漢字の判定
-  const japaneseRegex = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/
+  const japaneseRegex = /^[\u30A0-\u30FF\u3040-\u309F\u3005-\u3006\u30E0-\u9FCF]+$/
   // console.log(input.match(japanese_regex))
   if (input.match(japaneseRegex) === null) {
     return res.status(400).json({ code: -1, error: 'text expects only Japanese'})
@@ -129,7 +129,7 @@ app.get('/shiritori', async (req: any, res: any) => {
 
   const inputWordInformation = await getFurigana(input)
     .then((result) => {
-      if(result.slice(-1) != 'ン') {
+      if (result.slice(-1) !== 'ン') {
         return {
           furigana: result,
           violation: false,
@@ -146,7 +146,7 @@ app.get('/shiritori', async (req: any, res: any) => {
       }
     })
     .catch((error) => {
-      switch(error) {
+      switch (error) {
         case -1:
           // 言葉が2つ以上の単語から作られている
           return {
@@ -167,13 +167,13 @@ app.get('/shiritori', async (req: any, res: any) => {
           return {
             furigana: '',
             violation: null,
-            error: error,
+            error,
             error_code: null
           }
       }
     })
 
-  if(inputWordInformation.error != null) {
+  if (inputWordInformation.error != null) {
     return res.status(200).json({
       code: false,
       input: {
