@@ -45,7 +45,7 @@ function getFurigana(text: string): Promise<string> {
   })
 }
 
-function convertSmallJapanese(text: string): string {
+function convertSmallKatakana(text: string): string {
   switch(text) {
     case('ァ'):
       return 'ア'
@@ -78,7 +78,7 @@ function convertSmallJapanese(text: string): string {
 
 async function getNextWord(currentWord: string) {
   const c = await pool.connect()
-  const nextFirstChar = convertSmallJapanese(currentWord.slice(-1)) // 今の単語の最後の1文字
+  const nextFirstChar = convertSmallKatakana(currentWord.slice(-1)) // 今の単語の最後の1文字
   const result = await c.query(
   `
     SELECT
