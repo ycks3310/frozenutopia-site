@@ -105,7 +105,7 @@ async function getNextWord(currentWord: string) {
       console.log(err)
       return null
     })
-
+  await c.release(true)
   return result
 }
 
