@@ -23,8 +23,8 @@ function getYomigana(text: string): Promise<string> {
 }
 
 app.get('/shiritori', async (req: any, res: any) => {
-  const text = req.query.text
-  const yomigana = await getYomigana(text)
+  const input = req.query.text
+  const yomigana = await getYomigana(input)
   .then((result) => {
     return result
   })
@@ -32,7 +32,10 @@ app.get('/shiritori', async (req: any, res: any) => {
     console.log(e)
     return res.status(500).json()
   })
-  return res.status(200).json(yomigana)
+  return res.status(200).json({
+    input,
+    yomigana
+  })
 })
 
 module.exports = {
