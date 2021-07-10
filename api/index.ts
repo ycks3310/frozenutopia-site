@@ -45,7 +45,7 @@ app.get('/shiritori', async (req: any, res: any) => {
     })
 
   if(furigana === null) {
-    return res.status(400).json({code: false, error: 'Number of words is larger than 1'})
+    return res.status(200).json({code: false, error: 'Number of words is larger than 1'})
   }
 
   return res.status(200).json({
