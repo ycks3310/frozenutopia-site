@@ -1,6 +1,25 @@
 const express = require('express')
 const app = express()
 const kuromoji = require('kuromoji')
+const pg = require('pg')
+let pool: any
+if(process.env.ENV == 'develop') {
+  pool = new pg.Pool({
+    database: process.env.DB_NAME_DEV,
+    user: process.env.DB_USER_DEV,
+    password: process.env.DB_PASSWORD_DEV,
+    host: process.env.DB_HOST_DEV,
+    port: 5432
+  })
+} else if (process.env.ENV == 'production') {
+  pool = new pg.Pool({
+    database: process.env.DB_NAME_PROD,
+    user: process.env.DB_USER_PROD,
+    password: process.env.DB_PASSWORD_PROD,
+    host: process.env.DB_HOST_PROD,
+    port: 5432
+  })
+}
 
 app.use(express.json({ extended: true, limit: '100mb' }))
 app.use(express.urlencoded({ extended: true, limit: '100mb' }))
@@ -19,6 +38,30 @@ function getFurigana(text: string): Promise<string|null> {
       resolve(path[0].reading)
     })
   })
+}
+
+async function getNextWord(furigana: string) {
+  const c = await pool.connect()
+  const firstChar = furigana.slice(0, 1) // 先頭1文字
+  try{
+    const result = await c.query(
+    `
+      SELECT
+        *
+      FROM
+        word_list
+      WHERE
+        furigana LIKE $1
+      AND
+        furigana NOT LIKE '%ン'
+      ORDER BY RANDOM()
+      LIMIT 1
+    `, [firstChar + '%'])
+    return result.rows
+  } catch(err) {
+    console.log(err)
+    return null
+  }
 }
 
 /**
@@ -48,11 +91,17 @@ app.get('/shiritori', async (req: any, res: any) => {
     return res.status(200).json({code: false, error: 'Number of words is larger than 1'})
   }
 
+
   return res.status(200).json({
     code: true,
     input,
     furigana
   })
+})
+
+app.get('/test', async (req: any, res: any) => {
+  const result = await getNextWord('ジャバスクリプト')
+  return res.status(200).json(result)
 })
 
 module.exports = {
