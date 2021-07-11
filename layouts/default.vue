@@ -60,6 +60,11 @@ export default class Layout extends Vue {
       icon: 'mdi-google-controller',
       title: 'しりとり',
       to: '/shiritori'
+    },
+    {
+      icon: 'mdi-help-circle',
+      title: 'しりとり解説',
+      to: '/shiritori/about'
     }
   ]
 

@@ -4,6 +4,45 @@
       <h1> しりとり </h1>
     </v-container>
     <v-container>
+      これは何？→
+      <NuxtLink to="/shiritori/about">
+        解説記事
+      </NuxtLink>
+      <v-divider />
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            ルール
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <ul>
+              <li>使用可能な言葉はmecab-IPA辞書に準拠する→<NuxtLink to="/shiritori/about">解説記事</NuxtLink></li>
+              <li>ひらがな、カタカナ、漢字の言葉を対象とする</li>
+              <li>mecab-IPA辞書に存在しない言葉は対象外とする</li>
+              <li>捨て仮名（小書き文字、「ゃ」「ぁ」「っ」）などは通常の大文字に戻す</li>
+              <ul>
+                <li>例：「神社」→次の言葉は「ヤ」から始まるものを入力する</li>
+                <li>「ヰ」「ヱ」はそれぞれ「イ」「エ」とする</li>
+              </ul>
+              <li>伸ばし棒「ー」はそのひとつ前の文字を取る</li>
+              <ul>
+                <li>例：「カレンダー」→次の言葉は「ダ」から始まるものを入力する</li>
+              </ul>
+              <li>「ん」で終わる言葉はルール違反とする</li>
+              <li>複数の単語からなる言葉はルール違反とする</li>
+              <ul>
+                <li>例：アメリカ合衆国大統領（アメリカ合衆国 + 大統領）</li>
+              </ul>
+              <li>名詞以外の言葉はルール違反とする</li>
+              <ul>
+                <li>例：美しい（形容詞）など</li>
+              </ul>
+            </ul>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </v-container>
+    <v-container>
       <v-btn v-if="isStarted===false" @click.stop="startShiritori()">
         スタート
       </v-btn>
