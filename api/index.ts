@@ -79,6 +79,8 @@ function convertSmallKatakana (text1: string, text2: string): string {
       return 'ワ'
     case ('ヱ'):
       return 'エ'
+    case ('ヰ'):
+      return 'イ'
     case ('ー'):
       return text2 // 伸ばしぼうで終わった場合手前の文字を取ることとする
     default:
