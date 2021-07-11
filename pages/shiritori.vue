@@ -6,8 +6,12 @@
     <v-container class="main">
       <v-row>
         <v-col>
+          〇〇ターン目
+        </v-col>
+        <v-col>
           タイマー：00:00:00
         </v-col>
+        <v-spacer />
       </v-row>
       <v-row align="center" class="second">
         <v-col class="textfield">
