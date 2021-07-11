@@ -4,6 +4,11 @@
       <h1> しりとり </h1>
     </v-container>
     <v-container>
+      初公開：初版（2021年7月11日）
+      <br />
+      最新バージョン：初版（2021年7月11日）
+    </v-container>
+    <v-container>
       これは何？→
       <NuxtLink to="/shiritori/about">
         解説記事
