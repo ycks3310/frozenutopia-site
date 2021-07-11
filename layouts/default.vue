@@ -1,11 +1,9 @@
 <template>
   <v-app light>
     <v-navigation-drawer
-      v-model="drawer"
-      :clipped="clipped"
-      floating
+      clipped
       permanent
-      mini-variant
+      width="200px"
       app
     >
       <v-list>
@@ -26,12 +24,12 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
+      clipped-left
       dense
       flat
+      color="#E1F5FE"
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-main>
@@ -48,12 +46,6 @@ import { Component, Prop, Vue } from 'nuxt-property-decorator'
 @Component
 export default class Layout extends Vue {
   @Prop()
-  clipped = false
-
-  @Prop()
-  drawer = false
-
-  @Prop()
   items = [
     {
       icon: 'mdi-home',
@@ -61,13 +53,18 @@ export default class Layout extends Vue {
       to: '/'
     },
     {
-      icon: 'mdi-chart-bubble',
-      title: 'Inspire',
-      to: '/inspire'
+      icon: 'mdi-account',
+      title: '私について',
+      to: '/about'
+    },
+    {
+      icon: 'mdi-google-controller',
+      title: 'しりとり',
+      to: '/shiritori'
     }
   ]
 
   @Prop()
-  title = 'Vuetify.js'
+  title = 'FROZENUTOPIA.NET'
 }
 </script>
