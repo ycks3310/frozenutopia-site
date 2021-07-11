@@ -20,15 +20,19 @@
           {{turnCount}} ターン目
         </v-col>
         <v-col>
-          タイマー：00:00:00
+          タイマー：残り{{timerCount}}秒
         </v-col>
         <v-spacer />
       </v-row>
       <v-row v-if="isStarted===true" align="center" class="second">
         <v-col class="textfield">
-          <v-text-field v-model="inputText" label="言葉を入力" @keyup.enter="send()" />
+          <v-text-field v-if="isGameover===false" v-model="inputText" label="言葉を入力" @keyup.enter="send()" />
+          <v-text-field v-if="isGameover===true" v-model="inputText" disabled label="言葉を入力" />
         </v-col>
-        <v-btn @click.stop="send()">
+        <v-btn v-if="isGameover===false" @click.stop="send()">
+          送信
+        </v-btn>
+        <v-btn v-if="isGameover===true" disabled @click.stop="send()">
           送信
         </v-btn>
       </v-row>
@@ -66,7 +70,11 @@ export default class Shiritori extends Vue {
   public inputText: string = ''
   public isStarted: boolean = false
   public isLoading: boolean = false
+  public isGameover: boolean = false
   public turnCount: number = 0
+  public timelimit: number = 30
+  public timerCount: number = 30
+  public timer!: any
 
   public words: any[] = []
 
@@ -87,17 +95,21 @@ export default class Shiritori extends Vue {
       isEnemy: true
     }
     this.words.push(word)
+    this.timerCount = this.timelimit
+    this.timer = setInterval(this.countdown, 1000)
     this.isStarted = true
     this.turnCount += 1
   }
 
   public async send () {
+    clearInterval(this.timer)
     this.isLoading = true
     if (this.inputText === '') {
       this.isError = true
       this.errorText = '正しい言葉を入力してください'
       this.inputText = ''
       this.isLoading = false
+      this.timer = setInterval(this.countdown, 1000)
       return
     }
     // ひらがな、カタカナ、漢字の判定
@@ -107,6 +119,7 @@ export default class Shiritori extends Vue {
       this.errorText = 'ひらがな、カタカナ、漢字を入力してください'
       this.inputText = ''
       this.isLoading = false
+      this.timer = setInterval(this.countdown, 1000)
       return
     }
     this.isError = false
@@ -118,12 +131,11 @@ export default class Shiritori extends Vue {
         this.isError = true
       })
     if (res.code === true) {
-      console.log(this.words[0])
-      console.log(res.input.information.first_char)
       if (this.words[0].last_char !== res.input.information.first_char) {
         this.isError = true
         this.errorText = 'ルール違反です（文字の不一致）'
         this.isLoading = false
+        this.timer = setInterval(this.countdown, 1000)
         return
       }
       const playerWord = {
@@ -147,19 +159,39 @@ export default class Shiritori extends Vue {
       this.inputText = ''
       this.isLoading = false
       this.turnCount += 1
+      this.timerCount = this.timelimit // 次のターンに進んだときのみタイマーをリセットする
+      this.timer = setInterval(this.countdown, 1000)
     } else {
       this.isError = true
       this.errorText = res.input.information.error
       this.isLoading = false
+      this.timer = setInterval(this.countdown, 1000)
     }
   }
 
   public endShiritori () {
     this.isStarted = false
+    this.isGameover = false
     this.words = []
     this.turnCount = 0
     this.isError = false
     this.errorText = ''
+    clearInterval(this.timer)
+    this.timerCount = 30
+  }
+
+  public countdown () {
+    this.timerCount = this.timerCount - 1
+    if (this.timerCount === 0) {
+      this.gameover()
+    }
+  }
+
+  public gameover () {
+    clearInterval(this.timer)
+    this.isError = true
+    this.isGameover = true
+    this.errorText = '時間切れです'
   }
 }
 </script>
