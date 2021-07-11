@@ -1,11 +1,17 @@
 <template>
   <v-app light>
     <v-navigation-drawer
+      v-model="drawer"
+      clipped
+      fixed
+      app
+    >
+    <!-- <v-navigation-drawer
       clipped
       permanent
       width="200px"
       app
-    >
+    > -->
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -30,6 +36,7 @@
       color="#E1F5FE"
       app
     >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
     </v-app-bar>
     <v-main>
@@ -45,7 +52,8 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class Layout extends Vue {
-  items = [
+  public drawer = true
+  public items = [
     {
       icon: 'mdi-home',
       title: 'Home',
