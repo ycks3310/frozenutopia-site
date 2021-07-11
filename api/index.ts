@@ -77,6 +77,8 @@ function convertSmallKatakana (text1: string, text2: string): string {
       return 'ケ'
     case ('ヮ'):
       return 'ワ'
+    case ('ヱ'):
+      return 'エ'
     case ('ー'):
       return text2 // 伸ばしぼうで終わった場合手前の文字を取ることとする
     default:
@@ -273,12 +275,13 @@ app.get('/shiritori/start', async (_req: any, res: any) => {
     LIMIT 1
   `)
     .then((result: any) => {
+      const lastChar = convertSmallKatakana(result.rows[0].furigana.slice(-1), result.rows[0].furigana.slice(-2, -1))
       return {
         id: result.rows[0].id,
         word: result.rows[0].word,
         furigana: result.rows[0].furigana,
         first_char: result.rows[0].furigana.slice(0, 1),
-        last_char: result.rows[0].furigana.slice(-1)
+        last_char: lastChar
       }
     })
     .catch((err: any) => {
