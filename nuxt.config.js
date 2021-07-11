@@ -21,6 +21,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/main.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -63,13 +64,13 @@ export default {
           success: colors.green.accent3
         },
         light: {
-            primary: '#607d8b',
-            secondary: '#03a9f4',
-            accent: '#ff5722',
-            error: '#f44336',
-            warning: '#e91e63',
-            info: '#673ab7',
-            success: '#2196f3'
+          primary: '#607d8b',
+          secondary: '#03a9f4',
+          accent: '#ff5722',
+          error: '#f44336',
+          warning: '#e91e63',
+          info: '#673ab7',
+          success: '#2196f3'
         }
       }
     }
