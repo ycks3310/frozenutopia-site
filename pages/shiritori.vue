@@ -4,6 +4,11 @@
       <h1> しりとり </h1>
     </v-container>
     <v-container class="main">
+      <v-row>
+        <v-col>
+          タイマー：00:00:00
+        </v-col>
+      </v-row>
       <v-row align="center" class="second">
         <v-col class="textfield">
           <v-text-field v-model="inputText" label="言葉を入力" />
