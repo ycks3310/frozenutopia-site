@@ -11,7 +11,7 @@
     <v-container>
       これは何？→
       <NuxtLink to="/shiritori/about">
-        解説記事
+        しりとり雑記
       </NuxtLink>
       <v-divider />
       <v-expansion-panels>
@@ -21,7 +21,7 @@
           </v-expansion-panel-header>
           <v-expansion-panel-content>
             <ul>
-              <li>使用可能な言葉はmecab-IPA辞書に準拠する→<NuxtLink to="/shiritori/about">解説記事</NuxtLink></li>
+              <li>使用可能な言葉はmecab-IPA辞書に準拠する</li>
               <li>ひらがな、カタカナ、漢字の言葉を対象とする</li>
               <li>mecab-IPA辞書に存在しない言葉は対象外とする</li>
               <li>捨て仮名（小書き文字、「ゃ」「ぁ」「っ」）などは通常の大文字に戻す</li>

@@ -1,12 +1,12 @@
 <template>
   <v-app light>
     <v-container>
-      <h1> しりとり解説 </h1>
+      <h1> しりとり雑記 </h1>
     </v-container>
     <v-container>
       初版公開日：2021年7月11日
       <br />
-      更新日：2021年7月11日
+      更新日：2021年7月13日
     </v-container>
     <v-container>
       <h3>実装で使用したライブラリなど（ありがとうございます）</h3>
