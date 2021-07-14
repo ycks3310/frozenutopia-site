@@ -71,7 +71,7 @@ export default class Layout extends Vue {
     },
     {
       icon: 'mdi-help-circle',
-      title: 'しりとり解説',
+      title: 'しりとり雑記',
       to: '/shiritori/about'
     }
   ]
