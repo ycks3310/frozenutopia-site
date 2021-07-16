@@ -12,7 +12,7 @@
           私について
         </span>
       </h1>
-      自己紹介
+      TBD
     </v-container>
     <v-container>
       <h1>
@@ -55,7 +55,7 @@
         </v-col>
         <v-col>
           <h2><span class="underline1"> データベース </span></h2>
-          <p>関わるPJがMySQLのことが多い</p>
+          <p>関わる業務がMySQLのことが多い</p>
           <v-simple-table>
             <thead>
               <tr>
@@ -137,7 +137,7 @@
       <v-row>
         <v-col>
           <h2><span class="underline1"> その他 </span></h2>
-          <p>その他のスキルなど</p>
+          <p>その他のスキル、個人的な趣味で取り組んだものなど</p>
           <v-simple-table>
             <thead>
               <tr>
@@ -210,8 +210,8 @@
       <ul>
         <li>WebサーバのインフラにAzure App ServiceのNode.jsランタイムを採用</li>
         <ul>
-          <li>フロントエンドはNuxt.js + Vuetify</li>
-          <li>バックエンドはNode.js + Express</li>
+          <li>フロントエンドはNuxt.js + Vuetify + TypeScript</li>
+          <li>バックエンドはNode.js + Express + TypeScript</li>
         </ul>
         <li>PostgreSQLはAzure Virtual Machineにインストール</li>
       </ul>
@@ -230,27 +230,27 @@ export default class AboutMe extends Vue {
     {
       skill: 'PHP (5.x, 7.x)',
       years: '6年',
-      text: 'あああ'
+      text: 'メイン言語。大学の卒論で実験プログラム作ったりしました。業務的には最初はMecab使ってフルスクラッチでシステム作ったりしてました。一時期はWordPressをいじったりとかしていましたが、現職ではもっぱらLaravelを使っています。'
     },
     {
       skill: '┗ Laravel',
       years: '3年',
-      text: 'あああ'
+      text: '最近のメイン。APIサーバー建てたり、バッチ処理作ってスケジューラーで回したりしてます。'
     },
     {
       skill: 'Python',
       years: '4年',
-      text: 'あああ'
+      text: '大学院で主に使っていました。ディープラーニングとか自然言語処理とか。業務で画像処理とか統計処理を行うAPIサーバーを建てたりしたこともありましたが、最近はphpでも良い感じのライブラリあったりとか、簡単な計算なら自分で実装したりするので使わなくなってきました。'
     },
     {
       skill: 'Node.js',
       years: '2年',
-      text: '主にTypeScript + Express'
+      text: '主にTypeScript + Express。業務で新たにWebサイトを構築する機会があったのでチャレンジしています。'
     },
     {
       skill: 'Go',
       years: '1年',
-      text: 'あああ'
+      text: '他PJのシステムをいじるのに少しだけ使いました。'
     }
   ]
 
@@ -258,12 +258,12 @@ export default class AboutMe extends Vue {
     {
       skill: 'TypeScript',
       years: '1年',
-      text: 'あああ'
+      text: '最近のチャレンジです。このWebサイトでも採用しています。'
     },
     {
       skill: 'Vue.js (Nuxt.js)',
       years: '1年',
-      text: 'あああ'
+      text: '最近のチャレンジです。このWebサイトでも採用。'
     }
   ]
 
@@ -271,17 +271,17 @@ export default class AboutMe extends Vue {
     {
       skill: 'MySQL',
       years: '6年',
-      text: 'あああ'
+      text: 'なぜか業務でよく関わります。'
     },
     {
       skill: 'PostgreSQL',
       years: '2年',
-      text: 'あああ'
+      text: 'たまに関わります。たまにしか使わないからpsqlコマンドをよく忘れます。'
     },
     {
       skill: 'InfluxDB',
       years: '1年',
-      text: 'あああ'
+      text: '業務で関わる特殊な形式のデータを取り扱う時に使っていました。最近はMySQLに移行できたのでお役御免に。'
     }
   ]
 
@@ -289,37 +289,37 @@ export default class AboutMe extends Vue {
     {
       skill: 'Linux',
       years: '6年',
-      text: '主にUbuntu'
+      text: '主にUbuntuを使ってます。AWS EC2のときだけAmazon Linux2にしています。'
     },
     {
       skill: 'シェルスクリプト',
       years: '5年',
-      text: 'bash'
+      text: 'Bashで色々こねくり回して業務量減らす努力をしています。'
     },
     {
       skill: 'Docker',
       years: '4年',
-      text: 'docker-compose含む'
+      text: 'docker-compose含む。何かとDockerfileで作ってしまうので、Dockerなしは忘れがち。'
+    },
+    {
+      skill: 'nginx',
+      years: '4年',
+      text: 'phpのリバースプロキシ用。込み入ったことはできません。。。'
     },
     {
       skill: 'Azure',
       years: '3年',
-      text: 'あああ'
+      text: '業務で使っているメインのクラウド基盤。このWebサイトの基盤でもあります。'
     },
     {
       skill: '小規模事務所等のネットワーク設計・構築',
       years: '2年',
-      text: 'あああ'
-    },
-    {
-      skill: '構成管理 (Ansible)',
-      years: '2年',
-      text: 'あああ'
+      text: '業務で取り扱うハードウェアの設置の際に関わらせていただいています。物理作業はクラウドとは違った面白さがあると思っています。'
     },
     {
       skill: 'AWS (EC2, S3)',
       years: '1年',
-      text: 'あああ'
+      text: '業務でEC2とS3だけ関わる機会があります。'
     }
   ]
 
@@ -327,12 +327,27 @@ export default class AboutMe extends Vue {
     {
       skill: 'OpenCV',
       years: '2年',
-      text: 'aaa'
+      text: '画像処理するような業務でPython上で使っていました。ARマーカーで何か作りたい。。。'
     },
     {
       skill: 'Unity & C#',
       years: '1年',
-      text: 'あああ'
+      text: 'こちらも画像処理するような業務で少しだけ使っていました。'
+    },
+    {
+      skill: 'Azure（自分用）',
+      years: '趣味',
+      text: 'このWebサイトのインフラ基盤です。'
+    },
+    {
+      skill: 'Office 365 Business導入・運用（自分用）',
+      years: '趣味',
+      text: '独自ドメインで自分用のメールアドレスが欲しくなったのでAzureと組み合わせて導入・運用しています。'
+    },
+    {
+      skill: 'Mastodon運用',
+      years: '趣味',
+      text: 'オープンソースの分散型SNSです。友人の間で使っています。Azure VM上のDockerコンテナで稼働中です。'
     }
   ]
 

@@ -129,8 +129,8 @@
       <ul>
         <li>WebサーバのインフラにAzure App ServiceのNodejsランタイムを採用</li>
         <ul>
-          <li>フロントエンドはNuxt.js + Vuetify</li>
-          <li>バックエンドはNode.js + Express</li>
+          <li>フロントエンドはNuxt.js + Vuetify + TypeScript</li>
+          <li>バックエンドはNode.js + Express + TypeScript</li>
         </ul>
         <li>PostgreSQLはAzure Virtual Machineにインストール</li>
         <ul>
