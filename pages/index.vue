@@ -1,77 +1,187 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-app light>
+    <v-container>
+      <p>最終更新日：2021年7月16日</p>
+    </v-container>
+    <v-container>
+      <h1>
+        <span class="underline1">
+          <v-icon size="40px" color="blue">
+            mdi-account
+          </v-icon>
+          私について
+        </span>
+      </h1>
+    </v-container>
+    <v-container>
+      自己紹介
+    </v-container>
+    <v-container>
+      <h1>
+        <span class="underline1">
+          <v-icon size="40px" color="blue">
+            mdi-wrench
+          </v-icon>
+          スキル
+        </span>
+      </h1>
+    </v-container>
+    <v-container>
+      学生アルバイトとしての業務から社会人として携わった業務までの技術経験一覧
+    </v-container>
+    <v-container>
+      <v-row>
+        <v-col>
+          <h2><span class="underline1"> バックエンド </span></h2>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th width="30%">
+                  技術
+                </th>
+                <th width="20%">
+                  年数
+                </th>
+                <th width="40%">
+                  内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillBackend" :key="skill.id">
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.years }}</td>
+                <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+        <v-col>
+          <h2><span class="underline1"> フロントエンド </span></h2>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th width="30%">
+                  技術
+                </th>
+                <th width="20%">
+                  年数
+                </th>
+                <th width="40%">
+                  内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillFrontend" :key="skill.id">
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.years }}</td>
+                <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <h2><span class="underline1"> データベース </span></h2>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th width="30%">
+                  技術
+                </th>
+                <th width="20%">
+                  年数
+                </th>
+                <th width="40%">
+                  内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillDatabase" :key="skill.id">
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.years }}</td>
+                <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-app>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+
+@Component
+export default class AboutMe extends Vue {
+  hoge = true
+
+  skillBackend: any[] = [
+    {
+      skill: 'PHP (5.x, 7.x)',
+      years: '6年',
+      text: 'あああ'
+    },
+    {
+      skill: '┗ Laravel',
+      years: '3年',
+      text: 'あああ'
+    },
+    {
+      skill: 'Python',
+      years: '4年',
+      text: 'あああ'
+    },
+    {
+      skill: 'Node.js (主にTypeScript + Express)',
+      years: '1.5年',
+      text: 'あああ'
+    },
+    {
+      skill: 'Go',
+      years: '1年',
+      text: 'あああ'
+    }
+  ]
+
+  skillFrontend: any[] = [
+    {
+      id: 1,
+      skill: 'TypeScript',
+      years: '1.5年',
+      text: 'あああ'
+    },
+    {
+      id: 2,
+      skill: 'Vue.js (Nuxt.js)',
+      years: '1.5年',
+      text: 'あああ'
+    }
+  ]
+
+    skillDatabase: any[] = [
+      {
+        id: 1,
+        skill: 'MySQL',
+        years: '6年',
+        text: 'あああ'
+      },
+      {
+        id: 2,
+        skill: 'PostgreSQL',
+        years: '2年',
+        text: 'あああ'
+      }
+    ]
+}
+</script>
+
+<style scoped>
+.underline1 {
+  background: linear-gradient(transparent 90%, #81D4FA 90%)
+}
+</style>
