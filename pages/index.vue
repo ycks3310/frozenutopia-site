@@ -187,7 +187,7 @@
           <v-icon size="40px" color="blue">
             mdi-web
           </v-icon>
-          このサイトについて
+          このサイトの構成について
         </span>
       </h1>
       <v-img
