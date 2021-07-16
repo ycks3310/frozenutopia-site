@@ -238,7 +238,7 @@ export default class AboutMe extends Vue {
       text: '最近のメイン。APIサーバー建てたり、バッチ処理作ってスケジューラーで回したりしてます。'
     },
     {
-      skill: 'Python',
+      skill: 'Python (3.x)',
       years: '4年',
       text: '大学院で主に使っていました。ディープラーニングとか自然言語処理とか。業務で画像処理とか統計処理を行うAPIサーバーを建てたりしたこともありましたが、最近はphpでも良い感じのライブラリあったりとか、簡単な計算なら自分で実装したりするので使わなくなってきました。'
     },
@@ -304,7 +304,7 @@ export default class AboutMe extends Vue {
     {
       skill: 'nginx',
       years: '4年',
-      text: 'phpのリバースプロキシ用。込み入ったことはできません。。。'
+      text: 'phpのリバースプロキシ用。こみ入ったことはできません。。。'
     },
     {
       skill: 'Azure',
@@ -324,6 +324,11 @@ export default class AboutMe extends Vue {
   ]
 
   skillOthers: any[] = [
+    {
+      skill: 'Git',
+      years: '6年',
+      text: '言わずと知れたバージョン管理システム'
+    },
     {
       skill: 'OpenCV',
       years: '2年',
