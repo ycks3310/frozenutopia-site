@@ -127,10 +127,10 @@
         />
       </v-overlay>
       <ul>
-        <li>WebサーバはApp serviceのNodejsランタイムを採用</li>
+        <li>WebサーバのインフラにAzure App ServiceのNodejsランタイムを採用</li>
         <ul>
-          <li>フロントエンドはVuetify</li>
-          <li>バックエンドはExpress</li>
+          <li>フロントエンドはNuxt.js + Vuetify</li>
+          <li>バックエンドはNode.js + Express</li>
         </ul>
         <li>PostgreSQLはAzure Virtual Machineにインストール</li>
         <ul>

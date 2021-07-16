@@ -12,8 +12,6 @@
           私について
         </span>
       </h1>
-    </v-container>
-    <v-container>
       自己紹介
     </v-container>
     <v-container>
@@ -25,8 +23,6 @@
           スキル
         </span>
       </h1>
-    </v-container>
-    <v-container>
       学生アルバイトとしての業務から社会人として携わった業務までの技術経験一覧
     </v-container>
     <v-container>
@@ -44,7 +40,7 @@
                   年数
                 </th>
                 <th width="40%">
-                  内容
+                  コメント
                 </th>
               </tr>
             </thead>
@@ -70,7 +66,7 @@
                   年数
                 </th>
                 <th width="40%">
-                  内容
+                  コメント
                 </th>
               </tr>
             </thead>
@@ -98,7 +94,7 @@
                   年数
                 </th>
                 <th width="40%">
-                  内容
+                  コメント
                 </th>
               </tr>
             </thead>
@@ -124,7 +120,7 @@
                   年数
                 </th>
                 <th width="40%">
-                  内容
+                  コメント
                 </th>
               </tr>
             </thead>
@@ -152,7 +148,7 @@
                   年数
                 </th>
                 <th width="40%">
-                  内容
+                  コメント
                 </th>
               </tr>
             </thead>
@@ -185,6 +181,41 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container>
+      <h1>
+        <span class="underline1">
+          <v-icon size="40px" color="blue">
+            mdi-web
+          </v-icon>
+          このサイトについて
+        </span>
+      </h1>
+      <v-img
+        contain="true"
+        max-width="300"
+        src="/image/shiritori_arch.png"
+        @click="isArchOverlay=true"
+      />
+      <v-overlay
+        :value="isArchOverlay"
+        opacity="0.6"
+      >
+        <v-img
+          contain="true"
+          width="95vw"
+          src="/image/shiritori_arch.png"
+          @click="isArchOverlay=false"
+        />
+      </v-overlay>
+      <ul>
+        <li>WebサーバのインフラにAzure App ServiceのNode.jsランタイムを採用</li>
+        <ul>
+          <li>フロントエンドはNuxt.js + Vuetify</li>
+          <li>バックエンドはNode.js + Express</li>
+        </ul>
+        <li>PostgreSQLはAzure Virtual Machineにインストール</li>
+      </ul>
+    </v-container>
   </v-app>
 </template>
 
@@ -193,7 +224,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class AboutMe extends Vue {
-  hoge = true
+  isArchOverlay: boolean = false
 
   skillBackend: any[] = [
     {
@@ -213,7 +244,7 @@ export default class AboutMe extends Vue {
     },
     {
       skill: 'Node.js',
-      years: '1.5年',
+      years: '2年',
       text: '主にTypeScript + Express'
     },
     {
@@ -226,12 +257,12 @@ export default class AboutMe extends Vue {
   skillFrontend: any[] = [
     {
       skill: 'TypeScript',
-      years: '1.5年',
+      years: '1年',
       text: 'あああ'
     },
     {
       skill: 'Vue.js (Nuxt.js)',
-      years: '1.5年',
+      years: '1年',
       text: 'あああ'
     }
   ]
@@ -246,6 +277,11 @@ export default class AboutMe extends Vue {
       skill: 'PostgreSQL',
       years: '2年',
       text: 'あああ'
+    },
+    {
+      skill: 'InfluxDB',
+      years: '1年',
+      text: 'あああ'
     }
   ]
 
@@ -256,12 +292,27 @@ export default class AboutMe extends Vue {
       text: '主にUbuntu'
     },
     {
+      skill: 'シェルスクリプト',
+      years: '5年',
+      text: 'bash'
+    },
+    {
+      skill: 'Docker',
+      years: '4年',
+      text: 'docker-compose含む'
+    },
+    {
       skill: 'Azure',
       years: '3年',
       text: 'あああ'
     },
     {
       skill: '小規模事務所等のネットワーク設計・構築',
+      years: '2年',
+      text: 'あああ'
+    },
+    {
+      skill: '構成管理 (Ansible)',
       years: '2年',
       text: 'あああ'
     },
@@ -279,17 +330,7 @@ export default class AboutMe extends Vue {
       text: 'aaa'
     },
     {
-      skill: 'Azure',
-      years: '3年',
-      text: 'あああ'
-    },
-    {
-      skill: '小規模事務所等のネットワーク設計・構築',
-      years: '2年',
-      text: 'あああ'
-    },
-    {
-      skill: 'AWS (EC2, S3)',
+      skill: 'Unity & C#',
       years: '1年',
       text: 'あああ'
     }
