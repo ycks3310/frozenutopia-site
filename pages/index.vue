@@ -33,6 +33,7 @@
       <v-row>
         <v-col>
           <h2><span class="underline1"> バックエンド </span></h2>
+          <p>初業務から現在までphpメイン。最近はNode.jsにお熱。</p>
           <v-simple-table>
             <thead>
               <tr>
@@ -57,7 +58,62 @@
           </v-simple-table>
         </v-col>
         <v-col>
+          <h2><span class="underline1"> データベース </span></h2>
+          <p>関わるPJがMySQLのことが多い</p>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th width="30%">
+                  技術
+                </th>
+                <th width="20%">
+                  年数
+                </th>
+                <th width="40%">
+                  内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillDatabase" :key="skill.id">
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.years }}</td>
+                <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <h2><span class="underline1"> インフラ系 </span></h2>
+          <p>現職の都合でクラウドは基本的にAzureメイン</p>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th width="30%">
+                  技術
+                </th>
+                <th width="20%">
+                  年数
+                </th>
+                <th width="40%">
+                  内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillInfra" :key="skill.id">
+                <td>{{ skill.skill }}</td>
+                <td>{{ skill.years }}</td>
+                <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+        <v-col>
           <h2><span class="underline1"> フロントエンド </span></h2>
+          <p>最近フロントエンド側も取り組み始めた</p>
           <v-simple-table>
             <thead>
               <tr>
@@ -84,7 +140,8 @@
       </v-row>
       <v-row>
         <v-col>
-          <h2><span class="underline1"> データベース </span></h2>
+          <h2><span class="underline1"> その他 </span></h2>
+          <p>その他のスキルなど</p>
           <v-simple-table>
             <thead>
               <tr>
@@ -100,10 +157,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="skill in skillDatabase" :key="skill.id">
+              <tr v-for="skill in skillOthers" :key="skill.id">
                 <td>{{ skill.skill }}</td>
                 <td>{{ skill.years }}</td>
                 <td>{{ skill.text }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-col>
+        <v-col>
+          <h2><span class="underline1"> 資格など </span></h2>
+          <p>スキルに関係ないものも含む</p>
+          <v-simple-table>
+            <thead>
+              <tr>
+                <th>
+                  名称
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="skill in skillShikaku" :key="skill.id">
+                <td>{{ skill.skill }}</td>
               </tr>
             </tbody>
           </v-simple-table>
@@ -137,9 +212,9 @@ export default class AboutMe extends Vue {
       text: 'あああ'
     },
     {
-      skill: 'Node.js (主にTypeScript + Express)',
+      skill: 'Node.js',
       years: '1.5年',
-      text: 'あああ'
+      text: '主にTypeScript + Express'
     },
     {
       skill: 'Go',
@@ -150,33 +225,102 @@ export default class AboutMe extends Vue {
 
   skillFrontend: any[] = [
     {
-      id: 1,
       skill: 'TypeScript',
       years: '1.5年',
       text: 'あああ'
     },
     {
-      id: 2,
       skill: 'Vue.js (Nuxt.js)',
       years: '1.5年',
       text: 'あああ'
     }
   ]
 
-    skillDatabase: any[] = [
-      {
-        id: 1,
-        skill: 'MySQL',
-        years: '6年',
-        text: 'あああ'
-      },
-      {
-        id: 2,
-        skill: 'PostgreSQL',
-        years: '2年',
-        text: 'あああ'
-      }
-    ]
+  skillDatabase: any[] = [
+    {
+      skill: 'MySQL',
+      years: '6年',
+      text: 'あああ'
+    },
+    {
+      skill: 'PostgreSQL',
+      years: '2年',
+      text: 'あああ'
+    }
+  ]
+
+  skillInfra: any[] = [
+    {
+      skill: 'Linux',
+      years: '6年',
+      text: '主にUbuntu'
+    },
+    {
+      skill: 'Azure',
+      years: '3年',
+      text: 'あああ'
+    },
+    {
+      skill: '小規模事務所等のネットワーク設計・構築',
+      years: '2年',
+      text: 'あああ'
+    },
+    {
+      skill: 'AWS (EC2, S3)',
+      years: '1年',
+      text: 'あああ'
+    }
+  ]
+
+  skillOthers: any[] = [
+    {
+      skill: 'OpenCV',
+      years: '2年',
+      text: 'aaa'
+    },
+    {
+      skill: 'Azure',
+      years: '3年',
+      text: 'あああ'
+    },
+    {
+      skill: '小規模事務所等のネットワーク設計・構築',
+      years: '2年',
+      text: 'あああ'
+    },
+    {
+      skill: 'AWS (EC2, S3)',
+      years: '1年',
+      text: 'あああ'
+    }
+  ]
+
+  skillShikaku: any[] = [
+    {
+      skill: '基本情報処理技術者'
+    },
+    {
+      skill: 'Azure Fundamentals (AZ-900)'
+    },
+    {
+      skill: '第三級陸上特殊無線技士'
+    },
+    {
+      skill: '第三級アマチュア無線技士'
+    },
+    {
+      skill: '情報通信エンジニア（ビジネス）'
+    },
+    {
+      skill: '乙種第4類危険物取扱者'
+    },
+    {
+      skill: '準中型自動車（5t AT限定）免許'
+    },
+    {
+      skill: '普通自動二輪車免許'
+    }
+  ]
 }
 </script>
 
