@@ -231,7 +231,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 @Component
 export default class AboutMe extends Vue {
   isArchOverlay: boolean = false
-  mailaddress: string = 'info@frozenutopia.net'
+  mailaddress: string = 'site@frozenutopia.net'
 
   skillBackend: any[] = [
     {
