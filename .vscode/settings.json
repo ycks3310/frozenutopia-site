@@ -1,8 +1,0 @@
-{
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        ".vscode{,/**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/27bab007-d17e-4144-b733-9678eacc9f2b/resourceGroups/site-rg/providers/Microsoft.Web/sites/frozenutopiasite",
-    "appService.deploySubpath": "."
-}
