@@ -230,6 +230,12 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class AboutMe extends Vue {
+  head () {
+    return {
+      title: '私について'
+    }
+  }
+
   isArchOverlay: boolean = false
   mailaddress: string = 'site@frozenutopia.net'
 

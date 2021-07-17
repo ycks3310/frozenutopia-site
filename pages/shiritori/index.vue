@@ -5,7 +5,7 @@
     </v-container>
     <v-container>
       初公開：初版（2021年7月11日）
-      <br />
+      <br>
       最新バージョン：初版（2021年7月11日）
     </v-container>
     <v-container>
@@ -108,6 +108,12 @@ import Axios from 'axios'
 
 @Component
 export default class Shiritori extends Vue {
+  head () {
+    return {
+      title: 'しりとり'
+    }
+  }
+
   public isError: boolean = false
   public errorText: string = ''
 

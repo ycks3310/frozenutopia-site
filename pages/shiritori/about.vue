@@ -164,6 +164,12 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class AboutShiritori extends Vue {
+  head () {
+    return {
+      title: 'しりとり雑記'
+    }
+  }
+
   public shiritoriArchOverlay = false
 }
 </script>
