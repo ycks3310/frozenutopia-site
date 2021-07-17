@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <v-container>
-      <p>最終更新日：2021年7月16日</p>
+      <p>最終更新日：2021年7月17日</p>
     </v-container>
     <v-container>
       <h1>
@@ -12,7 +12,13 @@
           私について
         </span>
       </h1>
-      TBD
+      名前: K.S. (イニシャルです)
+      <br>
+      1993年に神奈川県に生まれ、神奈川県の県立高校普通科、大学: 環境情報学部(学士(環境情報学))、大学院: 情報学専攻(修士(工学))を経て2018年に新卒で大手情報通信系企業に入社しました。しかし、6か月で退職したと同時に現職のベンチャー企業に入社、そのまま現在に至り社会人歴4年目となりました。
+      <br>
+      現在は、社内向けの業務支援システム(Webサービス)の設計、実装、運用をフルスタックで担当しております。兼任で弊社ハードウェアの導入作業・保守作業をオンサイトならびにリモートで行うサービスエンジニア・サポートエンジニアとしての役割も担っております。
+      <br>
+      連絡先: {{ mailaddress }}
     </v-container>
     <v-container>
       <h1>
@@ -225,11 +231,12 @@ import { Component, Vue } from 'nuxt-property-decorator'
 @Component
 export default class AboutMe extends Vue {
   isArchOverlay: boolean = false
+  mailaddress: string = 'info@frozenutopia.net'
 
   skillBackend: any[] = [
     {
       skill: 'PHP (5.x, 7.x)',
-      years: '6年',
+      years: '5年',
       text: 'メイン言語。大学の卒論で実験プログラム作ったりしました。業務的には最初はMecab使ってフルスクラッチでシステム作ったりしてました。一時期はWordPressをいじったりとかしていましたが、現職ではもっぱらLaravelを使っています。'
     },
     {
@@ -264,13 +271,18 @@ export default class AboutMe extends Vue {
       skill: 'Vue.js (Nuxt.js)',
       years: '1年',
       text: '最近のチャレンジです。このWebサイトでも採用。'
+    },
+    {
+      skill: 'Vuetify',
+      years: '1年',
+      text: 'UIフレームワーク。日本語の情報サイトが多いので無学状態からでも何とかなっています。。。'
     }
   ]
 
   skillDatabase: any[] = [
     {
       skill: 'MySQL',
-      years: '6年',
+      years: '5年',
       text: 'なぜか業務でよく関わります。'
     },
     {
@@ -288,7 +300,7 @@ export default class AboutMe extends Vue {
   skillInfra: any[] = [
     {
       skill: 'Linux',
-      years: '6年',
+      years: '5年',
       text: '主にUbuntuを使ってます。AWS EC2のときだけAmazon Linux2にしています。'
     },
     {
@@ -326,7 +338,7 @@ export default class AboutMe extends Vue {
   skillOthers: any[] = [
     {
       skill: 'Git',
-      years: '6年',
+      years: '5年',
       text: '言わずと知れたバージョン管理システム'
     },
     {
