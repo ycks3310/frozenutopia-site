@@ -1,7 +1,14 @@
 <template>
   <v-app light>
     <v-container>
-      <h1> しりとり </h1>
+      <h1>
+        <span class="underline1">
+          <v-icon size="40px" color="blue">
+            mdi-google-controller
+          </v-icon>
+          しりとり
+        </span>
+      </h1>
     </v-container>
     <v-container>
       初公開：初版（2021年7月11日）
@@ -47,6 +54,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </v-container>
+    <v-divider />
     <v-container>
       <v-btn v-if="isStarted===false" @click.stop="startShiritori()">
         スタート
