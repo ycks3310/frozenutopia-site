@@ -403,9 +403,3 @@ export default class AboutMe extends Vue {
   ]
 }
 </script>
-
-<style scoped>
-.underline1 {
-  background: linear-gradient(transparent 90%, #81D4FA 90%)
-}
-</style>
