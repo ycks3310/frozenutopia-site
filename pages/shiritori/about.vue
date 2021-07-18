@@ -1,15 +1,26 @@
 <template>
   <v-app light>
     <v-container>
-      <h1> しりとり雑記 </h1>
+      <h1>
+        <span class="underline1">
+          <v-icon size="40px" color="blue">
+            mdi-message-bulleted
+          </v-icon>
+          しりとり雑記
+        </span>
+      </h1>
     </v-container>
     <v-container>
       初版公開日：2021年7月11日
-      <br />
-      更新日：2021年7月13日
+      <br>
+      更新日：2021年7月18日
     </v-container>
     <v-container>
-      <h3>実装で使用したライブラリなど（ありがとうございます）</h3>
+      <h3>
+        <span class="underline1">
+          実装で使用したライブラリなど（ありがとうございます）
+        </span>
+      </h3>
       <ul>
         <li>Kuromoji.js
           (<a href="https://github.com/takuyaa/kuromoji.js/" target="_blank" rel="noopener noreferrer">
@@ -32,7 +43,11 @@
         </ul>
       </ul>
       <v-divider />
-      <h3>実装のモチベーション</h3>
+      <h3>
+        <span class="underline1">
+          実装のモチベーション
+        </span>
+      </h3>
       <ul>
         <li>Typescriptの勉強</li>
         <ul>
@@ -40,7 +55,11 @@
           <li>何を作ろうか考えていたときにKuromoji.jsを見つけて、「これあればインタラクティブなしりとり実装できるじゃん」と思い立ったのがきっかけ</li>
         </ul>
       </ul>
-      <h3>所感など</h3>
+      <h3>
+        <span class="underline1">
+          所感など
+        </span>
+      </h3>
       <ul>
         <li>実装・構築について</li>
         <ul>
@@ -65,17 +84,25 @@
           <li>文字数が多い言葉は高得点、などの工夫を入れ込めばもう少しゲームらしくなるかもしれない</li>
         </ul>
       </ul>
-      <h3>残タスクなど</h3>
+      <h3>
+        <span class="underline1">
+          残タスクなど
+        </span>
+      </h3>
       <ul>
         <li>一度使った言葉に対するお手付き判定の追加</li>
-        <li>JSONの型定義の実装</li>
-        <li>スマホ上での表示に対応</li>
+        <li>JSONの型定義の実装→対応完了（2021年7月18日追記）</li>
+        <li>スマホ上での表示に対応→メニューをしまうようにして暫定対処（2021年7月18日追記）</li>
         <ul>
           <li>しりとりページに限らず、このサイト全体の課題</li>
         </ul>
       </ul>
       <v-divider />
-      <h3>特に悩んだところ</h3>
+      <h3>
+        <span class="underline1">
+          特に悩んだところ
+        </span>
+      </h3>
       <ul>
         <li>node-postgresのPrepared StatementsでLIKE文のあいまい検索(%)がうまく動かない</li>
         <ul>
@@ -88,7 +115,11 @@
         </ul>
       </ul>
       <v-divider />
-      <h3>言語・フレームワークなど</h3>
+      <h3>
+        <span class="underline1">
+          言語・フレームワークなど
+        </span>
+      </h3>
       <ul>
         <li>言語</li>
         <ul>
@@ -108,7 +139,11 @@
           <li>PostgreSQL 12</li>
         </ul>
       </ul>
-      <h3>システム構成（≒このWebサイト全体の構成）</h3>
+      <h3>
+        <span class="underline1">
+          システム構成（≒このWebサイト全体の構成）
+        </span>
+      </h3>
       <v-img
         contain="true"
         max-width="300"
@@ -137,7 +172,11 @@
           <li>PostgreSQLにはMecab用IPA辞書の単語リストを格納</li>
         </ul>
       </ul>
-      <h3>処理のおおまかな流れ</h3>
+      <h3>
+        <span class="underline1">
+          処理のおおまかな流れ
+        </span>
+      </h3>
       <ul>
         <li>1ターン目の言葉をPostgreSQLからランダムに取得</li>
         <li>ユーザーが次の言葉を入力する、フロント側からバックエンドへ送る</li>

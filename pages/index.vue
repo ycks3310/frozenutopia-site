@@ -4,6 +4,7 @@
       <p>最終更新日：2021年7月17日</p>
       <p> Github: <a href="https://github.com/ycks3310/frozenutopia-site" target="_blank" rel="noopener noreferrer">https://github.com/ycks3310/frozenutopia-site</a></p>
     </v-container>
+    <v-divider />
     <v-container>
       <h1>
         <span class="underline1">
