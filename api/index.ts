@@ -131,13 +131,14 @@ async function getNextWord (currentWord: string) {
   `, [nextFirstChar + '%'])
     .then((result: any) => {
       const lastChar = convertSmallKatakana(result.rows[0].furigana.slice(-1), result.rows[0].furigana.slice(-2, -1))
-      return {
+      const res: NextWordInfo = {
         id: result.rows[0].id,
         word: result.rows[0].word,
         furigana: result.rows[0].furigana,
         first_char: result.rows[0].furigana.slice(0, 1),
         last_char: lastChar
       }
+      return res
     })
     .catch((err: any) => {
       console.log(err)
@@ -166,10 +167,10 @@ app.get('/shiritori/next', async (req: any, res: any) => {
   }
 
   const inputWordInformation = await getFurigana(input)
-    .then((result) => {
+    .then((result): InputWordInfo => {
       if (result.reading.slice(-1) !== 'ン') {
         const lastChar = convertSmallKatakana(result.reading.slice(-1), result.reading.slice(-2, -1))
-        return {
+        const r: InputWordInfo = {
           furigana: result.reading,
           first_char: result.reading.slice(0, 1),
           last_char: lastChar,
@@ -178,8 +179,9 @@ app.get('/shiritori/next', async (req: any, res: any) => {
           error: null,
           error_code: true
         }
+        return r
       } else {
-        return {
+        const r: InputWordInfo = {
           furigana: result.reading,
           first_char: result.reading.slice(0, 1),
           last_char: result.reading.slice(-1),
@@ -188,9 +190,10 @@ app.get('/shiritori/next', async (req: any, res: any) => {
           error: 'ルール違反です（入力された言葉が「ん」で終了しています）',
           error_code: 0
         }
+        return r
       }
     })
-    .catch((error) => {
+    .catch((error): InputWordInfo => {
       switch (error) {
         case -1:
           // 言葉が2つ以上の単語から作られている
@@ -276,7 +279,7 @@ app.get('/shiritori/start', async (_req: any, res: any) => {
     ORDER BY RANDOM()
     LIMIT 1
   `)
-    .then((result: any) => {
+    .then((result: any): NextWordInfo => {
       const lastChar = convertSmallKatakana(result.rows[0].furigana.slice(-1), result.rows[0].furigana.slice(-2, -1))
       return {
         id: result.rows[0].id,
