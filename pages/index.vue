@@ -391,10 +391,13 @@ export default class AboutMe extends Vue {
       skill: 'Azure Fundamentals (AZ-900)'
     },
     {
+      skill: 'AWS認定ソリューションアーキテクト - アソシエイト'
+    },
+    {
       skill: '第三級陸上特殊無線技士'
     },
     {
-      skill: '第三級アマチュア無線技士'
+      skill: '第三級アマチュア無線技士／コールサイン: JK1CME'
     },
     {
       skill: '情報通信エンジニア（ビジネス）'
