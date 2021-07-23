@@ -388,7 +388,7 @@ export default class AboutMe extends Vue {
       skill: '基本情報処理技術者'
     },
     {
-      skill: 'Azure Fundamentals (AZ-900)'
+      skill: 'AZ-900 Microsoft Azure Fundamentals'
     },
     {
       skill: 'AWS認定ソリューションアーキテクト - アソシエイト'
