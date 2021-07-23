@@ -1,26 +1,33 @@
 <template>
   <v-app light>
     <v-container>
-      <p>最終更新日：2021年7月17日</p>
+      <p>最終更新日：2021年7月23日</p>
       <p> Github: <a href="https://github.com/ycks3310/frozenutopia-site" target="_blank" rel="noopener noreferrer">https://github.com/ycks3310/frozenutopia-site</a></p>
     </v-container>
     <v-divider />
     <v-container>
-      <h1>
-        <span class="underline1">
-          <v-icon size="40px" color="blue">
-            mdi-account
-          </v-icon>
-          私について
-        </span>
-      </h1>
-      名前: K.S. (イニシャルです)
-      <br>
-      1993年に神奈川県に生まれ、神奈川県の県立高校普通科、大学: 環境情報学部(学士(環境情報学))、大学院: 情報学専攻(修士(工学))を経て2018年に新卒で大手情報通信系企業に入社しました。しかし、6か月で退職したと同時に現職のベンチャー企業に入社、そのまま現在に至り社会人歴4年目となりました。
-      <br>
-      現在は、社内向けの業務支援システム(Webサービス)の設計、実装、運用をフルスタックで担当しております。兼任で弊社ハードウェアの導入作業・保守作業をオンサイトならびにリモートで行うサービスエンジニア・サポートエンジニアとしての役割も担っております。
-      <br>
-      連絡先: {{ mailaddress }}
+      <v-row>
+        <v-col>
+          <h1>
+            <span class="underline1">
+              <v-icon size="40px" color="blue">
+                mdi-account
+              </v-icon>
+              私について
+            </span>
+          </h1>
+          名前: K.S. (イニシャルです)
+          <br>
+          1993年に神奈川県に生まれ、神奈川県の県立高校普通科、大学: 環境情報学部(学士(環境情報学))、大学院: 情報学専攻(修士(工学))を経て2018年に新卒で大手情報通信系企業に入社しました。しかし、6か月で退職したと同時に現職のベンチャー企業に入社、そのまま現在に至り社会人歴4年目となりました。
+          <br>
+          現在は、社内向けの業務支援システム(Webサービス)の設計、実装、運用をフルスタックで担当しております。兼任で弊社ハードウェアの導入作業・保守作業をオンサイトならびにリモートで行うサービスエンジニア・サポートエンジニアとしての役割も担っております。
+          <br>
+          連絡先: {{ mailaddress }}
+        </v-col>
+        <v-col md="3">
+          <a class="twitter-timeline" data-width="300" data-height="500" href="https://twitter.com/nobi7978156?ref_src=twsrc%5Etfw">Tweets by nobi7978156</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
+        </v-col>
+      </v-row>
     </v-container>
     <v-container>
       <h1>
