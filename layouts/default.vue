@@ -59,6 +59,11 @@ export default class Layout extends Vue {
       title: 'Home',
       to: '/'
     },
+    // {
+    //   icon: 'mdi-web',
+    //   title: 'ブログ',
+    //   to: '/blog'
+    // },
     {
       icon: 'mdi-google-controller',
       title: 'しりとり',
