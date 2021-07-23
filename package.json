@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/vuetify": "^1.12.1",
     "core-js": "^3.15.1",
     "db-migrate": "^0.11.12",
